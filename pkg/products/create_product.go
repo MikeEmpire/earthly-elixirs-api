@@ -14,8 +14,10 @@ import (
 
 type ProductInput struct {
 	ProductName string `json:"productName"`
+	Description string `json:"description"`
 	UnitAmount  int64  `json:"unitAmount"`
 	Recurring   bool   `json:"recurring"`
+	Category    string `json:"category"`
 }
 
 func CreateProduct(context *gin.Context) {
@@ -36,13 +38,15 @@ func CreateProduct(context *gin.Context) {
 	}
 
 	params := &stripe.ProductParams{
-		Name: stripe.String(input.ProductName),
+		Name:        stripe.String(input.ProductName),
+		Description: stripe.String(input.Description),
 		DefaultPriceData: &stripe.ProductDefaultPriceDataParams{
 			UnitAmount: stripe.Int64(input.UnitAmount),
 			Currency:   stripe.String(string(stripe.CurrencyUSD)),
 		},
 	}
 	params.AddExpand("default_price")
+	params.AddMetadata("category", input.Category)
 	result, err := product.New(params)
 	if err != nil {
 		context.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})

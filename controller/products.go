@@ -10,4 +10,5 @@ func RegisterProductRoutes(r *gin.Engine) {
 	routes := r.Group("/products")
 	routes.GET("/", products.GetProducts)
 	routes.POST("/", products.CreateProduct)
+	routes.PUT("/", products.UpdateProduct)
 }
