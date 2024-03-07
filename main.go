@@ -35,6 +35,8 @@ func SetupRouter() *gin.Engine {
 func ServeApplication() {
 	router := SetupRouter()
 	controller.RegisterCheckoutRoutes(router)
+	controller.RegisterPricesRoutes(router)
+	controller.RegisterProductRoutes(router)
 	router.Run(":8000")
 	host := os.Getenv("HOST")
 
