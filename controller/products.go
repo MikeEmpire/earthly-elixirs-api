@@ -12,5 +12,6 @@ func RegisterProductRoutes(r *gin.Engine) {
 	routes.GET("/:product_id", products.GetProductById)
 	routes.POST("", products.CreateProduct)
 	routes.PUT("", products.UpdateProduct)
-	routes.PUT("/archive/:product_id/:price_id", products.ArchiveProduct)
+	routes.PUT("/archive/:product_id", products.ArchiveProduct)
+	routes.DELETE("/:product_id", products.DeleteProduct)
 }

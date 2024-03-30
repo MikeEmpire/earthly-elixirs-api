@@ -15,7 +15,6 @@ type UpdateProductInput struct {
 	Category    *string   `json:"category"`
 	Images      *[]string `json:"images"`
 	TaxCode     *string   `json:"tax_code"`
-	Active      *bool     `json:"active"`
 }
 
 func UpdateProduct(context *gin.Context) {
