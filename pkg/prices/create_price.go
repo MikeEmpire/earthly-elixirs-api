@@ -47,5 +47,4 @@ func CreatePrice(context *gin.Context) {
 		return
 	}
 	context.JSON(http.StatusCreated, gin.H{"result": result, "message": "Successfully created price"})
-	return
 }
