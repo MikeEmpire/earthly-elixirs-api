@@ -10,8 +10,8 @@ import (
 )
 
 type UpdateProductInput struct {
-	ProductId   string    `json:"product_id"`
-	ProductName *string   `json:"product_name"`
+	ProductId   string    `json:"productId"`
+	ProductName *string   `json:"productName"`
 	Category    *string   `json:"category"`
 	Images      *[]string `json:"images"`
 	TaxCode     *string   `json:"tax_code"`
@@ -38,10 +38,10 @@ func UpdateProduct(context *gin.Context) {
 
 	// Update images if provided
 	if input.Images != nil {
-		imagePtrs := make([]*string, 0, len(*input.Images))
-		for i, image := range *input.Images {
+		imagePtrs := []*string{}
+		for _, image := range *input.Images {
 			imagePtr := image
-			imagePtrs[i] = &imagePtr
+			imagePtrs = append(imagePtrs, &imagePtr)
 		}
 		// Update images
 		params.Images = imagePtrs

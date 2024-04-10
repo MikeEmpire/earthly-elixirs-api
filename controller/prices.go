@@ -9,6 +9,7 @@ import (
 func RegisterPricesRoutes(r *gin.Engine) {
 	routes := r.Group("/prices")
 	routes.GET("", prices.GetPrices)
+	routes.GET("/:price_id", prices.GetPriceById)
 	routes.POST("", prices.CreatePrice)
-	routes.PUT("/:price_id", prices.UpdatePrice)
+	routes.PUT("", prices.UpdatePrice)
 }

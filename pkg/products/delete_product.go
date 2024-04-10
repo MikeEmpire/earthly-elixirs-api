@@ -29,5 +29,5 @@ func DeleteProduct(context *gin.Context) {
 		context.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 		return
 	}
-	context.JSON(http.StatusOK, gin.H{"result": result, "message": "Successfully deleted product!"})
+	context.JSON(http.StatusOK, gin.H{"result": result, "productId": productId, "message": "Successfully deleted product!"})
 }
