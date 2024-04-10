@@ -8,6 +8,7 @@ import (
 
 func RegisterProductRoutes(r *gin.Engine) {
 	routes := r.Group("/products")
+	routes.GET("/admin", products.GetAdminProducts)
 	routes.GET("", products.GetProducts)
 	routes.GET("/:product_id", products.GetProductById)
 	routes.POST("", products.CreateProduct)
